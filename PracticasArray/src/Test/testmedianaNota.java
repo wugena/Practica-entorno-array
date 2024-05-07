@@ -9,7 +9,7 @@ import Util.MisArrays;
 
 class testmedianaNota {
 	class TestMedianaNotas {
-
+		//correccion  al error anterio de unar try catch y cambiar metodo
 		static int [] Impares;
 		static int[] Pares;
 		static int[] Menores;
