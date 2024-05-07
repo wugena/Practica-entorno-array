@@ -7,32 +7,40 @@ import org.junit.jupiter.api.Test;
 
 import Util.MisArrays;
 
-class TestArrays {
+class testmedianaNota {
+	class TestMedianaNotas {
 
-	class TestMediaNotas {
-		static int [] bien;
-		static int[] negativo;
-		static int[] mayores;
+		static int [] Impares;
+		static int[] Pares;
+		static int[] Menores;
+		static int[] Mayores;
 		
 		
 		@BeforeAll
 		static void setup() {
-			bien = new int []{6,7,8,9};
-			negativo = new int[] {-15};
-			mayores = new int[] {80};
+			Pares = new int []{9,8,7,6,5,};
+			Impares = new int [] {2,4,6,8,9,5,4,};
+			Menores = new int[] {-15};
+			Mayores = new int[] {80};
 		}
 		
 		@Test
-		void medianaMayor() {
+		void testPar() {
 			float resultadoEsperado = 5.5f;
-			float resultadoObtenido = MisArrays.mediaNotas(bien);
+			float resultadoObtenido = MisArrays.medianaNotas(Pares);
+			assertEquals(resultadoEsperado, resultadoObtenido);
+		}
+		@Test
+		void testImpar() {
+			float resultadoEsperado = 6f;
+			float resultadoObtenido = MisArrays.medianaNotas(Impares);
 			assertEquals(resultadoEsperado, resultadoObtenido);
 		}
 		
 		@Test
-		void NumeroMenor(){
+		void testNumeroMenor(){
 			Exception  excepcion = assertThrows(IllegalArgumentException.class,
-					() -> MisArrays.mediaNotas(negativo));
+					() -> MisArrays.medianaNotas(Menores));
 			
 			String esperado = "error";
 			String obtenido = excepcion.getMessage();
@@ -40,9 +48,10 @@ class TestArrays {
 		}
 		
 		@Test
-		void NumeroMayor(){
+		void testNumeroMayor(){
 			Exception  excepcion = assertThrows(IllegalArgumentException.class,
-					() -> MisArrays.mediaNotas(mayores));
+					() -> MisArrays.medianaNotas(Mayores));
+			
 			String esperado = "error";
 			String obtenido = excepcion.getMessage();
 			assertEquals(esperado,obtenido);
